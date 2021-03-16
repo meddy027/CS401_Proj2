@@ -36,10 +36,9 @@ public class AddressBook extends JFrame implements ActionListener
     /** Configuration: custom screen colours, layout constants and custom fonts. */
     private final Color
             veryRedRed = new Color(128, 0, 32),
-            darkBlue = new Color(0, 0, 150),
             backGroundColour = veryRedRed,
-            naviColor = Color.white,
-            textColor = Color.white;
+            naviColor = Color.DARK_GRAY,
+            textColor = Color.BLACK;
     private static final int
             windowWidth = 2700, windowHeight = 2700,               // Overall frame dimensions
             windowLocationX = 2700, windowLocationY = 2700;        //     and position
@@ -54,32 +53,32 @@ public class AddressBook extends JFrame implements ActionListener
             detailsFont = new Font("SansSerif", Font.PLAIN, 14);
 
     /** The navigation buttons. */
-    private JButton
-            first = new JButton("|<"),            // For "move to first contact" action
-            previous = new JButton("<"),          // For "move to previous contact" action
-            next = new JButton(">"),              // For "move to next contact" action
-            last = new JButton(">|");             // For "move to final contact" action
+    private final JButton
+            first = new JButton("|<");            // For "move to first contact" action
+            private final JButton previous = new JButton("<");          // For "move to previous contact" action
+            private final JButton next = new JButton(">");              // For "move to next contact" action
+            private final JButton last = new JButton(">|");             // For "move to final contact" action
 
     /** The action buttons */
-    private JButton
-            addContact = new JButton("Add new contact"),   // To request adding a new contact
-            deleteContact = new JButton("Delete contact"), // To delete the currently selected contact
-            deleteAll = new JButton("Delete all"),         // To delete all contacts
-            findContact = new JButton("Find exact name"),  // To find contact by exact match of name
-            findPartial = new JButton("Find partial name"),// To find contact by partial, case insensitive match of name
-            sortAtoZ = new JButton("Sort A to Z"),         // To request re-ordering the contact by names A to Z
-            sortZtoA = new JButton("Sort Z to A");         // To request re-ordering the contacts by name Z to A
+    private final JButton
+            addContact = new JButton("Add new contact");   // To request adding a new contact
+            private final JButton deleteContact = new JButton("Delete contact"); // To delete the currently selected contact
+            private final JButton deleteAll = new JButton("Delete all");         // To delete all contacts
+            private final JButton findContact = new JButton("Find exact name");  // To find contact by exact match of name
+            private final JButton findPartial = new JButton("Find partial name");// To find contact by partial, case insensitive match of name
+            private final JButton sortAtoZ = new JButton("Sort A to Z");         // To request re-ordering the contact by names A to Z
+            private final JButton sortZtoA = new JButton("Sort Z to A");         // To request re-ordering the contacts by name Z to A
 
     /** Text fields for data entry for adding new contact and finding a contact */
-    private JTextField
-            nameField = new JTextField(20),                // For entering a new name, or a name to find
-            addressField = new JTextField(30),             // For entering a new address
-            mobileField = new JTextField(12),              // For entering a new mobile number
-            emailField = new JTextField(30);               // For entering a new email address
+    private final JTextField
+            nameField = new JTextField(20);                // For entering a new name, or a name to find
+            private final JTextField addressField = new JTextField(30);             // For entering a new address
+            private final JTextField mobileField = new JTextField(12);              // For entering a new mobile number
+            private final JTextField emailField = new JTextField(30);               // For entering a new email address
 
     /** The contact details drawing panel. */
     @SuppressWarnings("serial")
-    private JPanel contactDetails = new JPanel()
+    private final JPanel contactDetails = new JPanel()
     {
         // paintComponent is called automatically when a screen refresh is needed
         public void paintComponent(Graphics g)
@@ -139,17 +138,29 @@ public class AddressBook extends JFrame implements ActionListener
 
         window.add(new JLabel("Navigation:"));
         window.add(first);
+        first.setForeground( Color.RED);
+        first.setBackground(Color.BLACK);
+        first.setOpaque(true);
         first.addActionListener(this);
         window.add(previous);
+        previous.setForeground( Color.RED);
+        previous.setBackground(Color.BLACK);
+        previous.setOpaque(true);
         previous.addActionListener(this);
         window.add(next);
+        next.setForeground( Color.RED);
+        next.setBackground(Color.BLACK);
+        next.setOpaque(true);
         next.addActionListener(this);
         window.add(last);
         last.addActionListener(this);
+        last.setForeground( Color.RED);
+        last.setBackground(Color.BLACK);
+        last.setOpaque(true);
 
         // Set up the details graphics panel
         contactDetails.setPreferredSize(new Dimension(panelWidth, panelHeight));
-        contactDetails.setBackground(backGroundColour);
+        contactDetails.setBackground(Color.RED);
         window.add(contactDetails);
 
         // Set up action buttons
@@ -434,11 +445,11 @@ public class AddressBook extends JFrame implements ActionListener
     private final int databaseSize = 10;
 
     /** To hold contacts' names, addresses, etc. */
-    private String[]
-            name = new String[databaseSize],
-            address = new String[databaseSize],
-            mobile = new String[databaseSize],
-            email = new String[databaseSize];
+    private final String[]
+            name = new String[databaseSize];
+    private final String[] address = new String[databaseSize];
+    private final String[] mobile = new String[databaseSize];
+    private final String[] email = new String[databaseSize];
 
     /** The current number of entries - always a value in range 0 .. databaseSize.
      *
